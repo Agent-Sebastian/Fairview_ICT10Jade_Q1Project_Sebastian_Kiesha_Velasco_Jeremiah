@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1 Project</title>
+    
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    
+
+    <style>
+
+        body{
+            background-image: url(https://c0.wallpaperflare.com/preview/452/100/984/restaurant-bar-coffee-shop.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 670px;
+            margin: 0%;
+            
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }   
+
+
+    .logo {
+    width: auto;        
+    height: auto;
+    margin-bottom: 0px; 
+    display: block;
+    }
+
+        .receiptb{
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(239, 239, 239);
+            width: 350px;
+            opacity: 90%;
+            border: dashed 5px orange;
+            padding: 20px;
+            
+            border-radius: 20px;
+            position: relative;
+            top: 100px;
+        }
+
+        .Receipt {
+        text-decoration: none;
+        color: black;
+            }
+
+        /*Navbar codes from G9*/
+        .navbar {
+        position: fixed;
+        top: 0;                 
+        left: 0;                 
+        width: 100%;             
+        box-sizing: border-box; 
+        background-color: rgb(239, 239, 239);
+        border-bottom: 4px solid orange;
+        padding: 15px 30px;
+        
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .nav {
+        display: flex;
+        align-items: center;
+        gap: 30px; 
+    }
+
+
+
+.SKU {
+    text-decoration: none;
+    color: black;
+}
+
+    </style>
+</head>
+<body>
+
+    <script type="py" src="main.py"></script>
+
+    <div class="navbar">  <!--Navbar codes from G9-->
+    <div class="nav">
+        <div class="logo">logo</div>
+        <a href="index.html" class="Receipt">Receipt Generator</a>
+        <a href="page2.html" class="SKU">SKU Generator</a>
+    </div>
+    <div class="username">User141</div>
+</div>
+
+
+
+
+
+<!-- Below navbar-->
+
+    <div id="receiptb" class="receiptb">
+        <br>
+        <h1>🍂---Order---🍂 </h1>
+
+            <h3>Please enter name here:</h3>
+            <input type="text" id="cn" placeholder="Enter name...">
+
+            <br><br> <!--This area will get user's choices and send them to Python for the calculation-->
+            <label for="cofs">Select Drink</label>
+            <br>
+
+                <select id="cofs">
+                    <option value="0">Choose an option</option>
+                    <option value="120">Americano</option>
+                    <option value="130">Spanish Latte</option>
+                    <option value="160">Affogato</option>
+                    <option value="200">Espresso</option>
+                    <option value="130">Cappuccino</option>
+                </select>
+
+                    <br>
+                    <br>
+
+                    <label>Choose:</label>
+                        <br>
+                        <input type="radio" id="regular" value="0" name="size">
+                        <label for="regular">Regular (+Php 0)</label>
+                        <br>
+                        <input type="radio" id="maior" value="30" name="size">
+                        <label for="maior">Maior (+Php 30)</label>
+                        <br>
+                        <input type="radio" id="magnus" value="60" name="size">
+                        <label for="magnus">Magnus (+Php 60)</label>
+                        <br>
+    <br>
+
+    <button type="button" py-click="place_order">Place Order</button>  <!-- starts the calculation at Python-->
+    
+    <br>
+        
+    <h1>🍁---Receipt---🍁</h1> <!-- Where the subtotal, VAT, and total will be displayed-->
+    <div id="output1">
+    </div>
+
+    </div>
+
+
+
+
+</body>
+</html>
