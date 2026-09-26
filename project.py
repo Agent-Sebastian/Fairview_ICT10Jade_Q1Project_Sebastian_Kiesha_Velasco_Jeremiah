@@ -2,7 +2,7 @@ from pyscript import document, display
 
 def place_order (e):
     document.getElementById("output1").innerHTML = ""
-    prod1 = document.getElementById("prod1")
+    prod1 = document.getElementById("prod1") #gets the value of the checkbox and verifies if checked by the user
     prod1 = float(prod1.value) * prod1.checked
     prod2 = document.getElementById("prod2")
     prod2 = float(prod2.value) * prod2.checked
@@ -18,12 +18,13 @@ def place_order (e):
     prod7 = float(prod7.value) * prod7.checked
     prod8 = document.getElementById("prod8")
     prod8 = float(prod8.value) * prod8.checked
-    size = document.querySelector("input[name='size']:checked")
+    size = document.querySelector("input[name='size']:checked") #selects input values with the name 'size' and checks if they were clicked by the user
     price = float(size.value)
-    subtotal = price + prod1 + prod2 + prod3 + prod4 + prod5 + prod6 + prod7 + prod8
-    tax = subtotal * 0.12
-    total = subtotal + tax
-    document.getElementById("output1").innerHTML = f'''
+    subtotal = price + prod1 + prod2 + prod3 + prod4 + prod5 + prod6 + prod7 + prod8 #sums all the values of the user's CHECKED input fields
+    tax = subtotal * 0.12 #derives the tax gained by how many products were checked
+    total = subtotal + tax #adds tax to subtotal to get the final price
+    #receipt processing through the f string for more clarity and authentic look; displays prices rounded down so that there are no repeating decimal prices
+    document.getElementById("output1").innerHTML = f''' 
     ----------------------------------------------------
     <br>
     <h2><b>***RECEIPT***</b></h2>
@@ -47,10 +48,11 @@ def place_order (e):
 
 def show_sku (e):
     document.getElementById("output2").innerHTML = ""
-    category = document.getElementById("cat").value
-    product = document.getElementById("prod").value
-    quantity = document.getElementById("quan").value 
-    sku = category[:3].upper() + "-" + product[:4].upper() + "-" + str(quantity)
+    category = document.getElementById("cat").value #gets the string value of the dropdown select field
+    product = document.getElementById("prod").value #gets the string value from the user's own input
+    quantity = document.getElementById("quan").value #gets integer value from the number input field
+    sku = category[:3].upper() + "-" + product[:4].upper() + "-" + str(quantity) #targets specific letters from each input and combines it to form the SKEW
+    #SKU shown in tabular format to organize the inputs of the user
     document.getElementById("output2").innerHTML = f'''
     
     <table class="table" style="font-family: 'Courier New', Courier, monospace;">
@@ -73,4 +75,3 @@ def show_sku (e):
     </tr>
     </tbody>
     </table>'''
-    
