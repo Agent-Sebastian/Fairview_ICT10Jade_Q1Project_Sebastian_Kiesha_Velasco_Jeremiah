@@ -3,67 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKU Generator</title>
+    <title>Receipt Generator</title>
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Ink:wght@100..900&family=Bitcount+Prop+Single:wght@100..900&family=Bungee+Tint&family=Funnel+Display:wght@300..800&family=GFS+Didot&family=Limelight&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mr+Bedfort&family=Playwrite+BE+WAL+Guides&family=Questrial&display=swap" rel="stylesheet">
- 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
 
-        body{
-            background-image: url(https://montauklakeclub.com/wp-content/uploads/checkeredtable-scaled.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            margin: 0%;
-        }
-    .container{
+    body{
+        background-image: url(https://c0.wallpaperflare.com/preview/452/100/984/restaurant-bar-coffee-shop.jpg);
+        background-size: cover;
+        height: 650px;
+        margin: 0%;
+            
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }   
+
+    #receiptb{
         margin: auto;
         justify-content: center;
         align-items: center;
         text-align: center;
         background-color: rgb(239, 239, 239);
-        width: 750px;
-        height: auto;
+        width: 560px;
         opacity: 90%;
-        border: solid 5px rgb(114, 81, 20);
-        padding: 0%;
-
+        border: dashed 5px orange;
+        padding: 20px;
+            
         border-radius: 20px;
         position: relative;
-        top: 180px;
+        top: 100px;
+        box-shadow: 0 0 4px 2px rgba(27, 27, 27, 0.5);
+    }
+
+    /*Navbar codes from G9*/
+    .navbar {
+        position: fixed;
+        top: 0;                 
+        left: 0;                 
+        width: 100%;  
+        height: 55px;           
+        box-sizing: border-box; 
+        background-color: rgb(239, 239, 239);
+        padding: 15px 30px;
+            
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        z-index: 1000;
+    }
+    label, p{
+        font-family: Questrial, sans;
+    }
+    .nav {
+        display: flex;
+        align-items: center;
+        gap: 30px; 
+    }
+    h3{
+        font-family: Limelight, serif;
+    }
+    #menu{
+        font-family: Mr Bedfort, script;
+        font-size: 50px;
     }
     .SKU {
         text-decoration: none;
         color: black;
     }
-    #baricon{
-        width: 20px;
-        height: auto;
+    .row{
+        background-color: white;
+        border-radius: 8px;
+        border-style: solid;
+        border-color: rgb(102, 138, 96);
+        border-width: 3px;
+    }
+    #output1{
+        font-family: 'Courier New', Courier, monospace;
     }
     a{
         font-family: Limelight, serif;
     }
-    h2{
-        font-family: Limelight, serif;
-    }
-    label, select, input, p{
-        font-family: Questrial, sans;
-    }
     #logo{
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
     </style>
 </head>
 <body>
 
-<!--Start of navbar-->
+    <script type="py" src="main.py"></script>
+
+      <!--Navbar codes from G9-->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #deab3c"; id="main-navbar"> 
-  <div class="container-fluid">
+    <div class="container-fluid">
     <a href="index.html" class="nav-logo">
     <img src="carbs.png" id="logo" alt="Company Logo">
-  </a>
+    </a>
     <a class="navbar-brand" href=""><img src="" alt="" class=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
@@ -71,53 +110,130 @@
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Menu</a>
+          <a class="nav-link" href="#">Menu</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">SKU Generator</a>
+          <a class="nav-link" href="page2.html">SKU Generator</a>
         </li>
       </ul>
       <form class="d-flex">
       </form>
     </div>
-  </div>
-</nav>
-<!--End of navbar-->
+    </div>
+    </nav>
 
+<!-- Below navbar-->
 
-
-    <div id="skub" class="container">
+    <div id="receiptb" class="container-fluid">
         <br>
-            <h2>𝄃𝄂𝄀𝄁𝄃𝄂𝄂</h2>
-            <h2>SKU Generator</h2>  
+        <h2 id="menu">Menu</h2>
+            <br>
+            <h3>Sandwiches:</h3> <!--This area will get user's choices and send them to Python for the calculation-->
+            <div class="container" style="text-align: left;">
+                <div class="row mb-1">
+                    <div class="col mt-1 mb-1">
+                        <input type="checkbox" class="form-check-input" id="prod1" value="79">
+                        <label for="prod1" class="form-check-label"><b>Breakfast Pandesal w/ Spam</b></label>
+                    </div>
+                    <div class="col-1 mt-1 me-5">
+                        <p><b style="color: cadetblue;">P79</b></p>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col mt-1">
+                        <input type="checkbox" class="form-check-input" id="prod2" value="89">
+                        <label for="prod2" class="form-check-label"><b>Breakfast Pandesal w/ Corned Beef</b></label>
+                    </div>
+                    <div class="col-1 mt-1 me-5">
+                        <p><b style="color: cadetblue;">P89</b></p>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col mt-1">
+                        <input type="checkbox" class="form-check-input" id="prod3" value="99">
+                        <label for="prod3" class="form-check-label"><b>Loaded Cheeseburger</b></label>
+                    </div>
+                    <div class="col-1 mt-1 me-5">
+                        <p><b style="color: cadetblue;">P99</b></p>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col mt-1">
+                        <input type="checkbox" class="form-check-input" id="prod4" value="129">
+                        <label for="prod4" class="form-check-label"><b>Double Loaded Cheeseburger</b></label>
+                    </div>
+                    <div class="col-1 me-5 mt-1">
+                        <p><b style="color: cadetblue;">P129</b></p>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col mt-1">
+                        <input type="checkbox" class="form-check-input" id="prod5" value="109">
+                        <label for="prod5" class="form-check-label"><b>Ham and Egg Sandwich</b></label>
+                    </div>
+                    <div class="col-1 me-5 mt-1">
+                        <p><b style="color: cadetblue;">P109</b></p>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col mt-1">
+                        <input type="checkbox" class="form-check-input" id="prod6" value="149">
+                        <label for="prod6" class="form-check-label"><b>Rib Sandwich</b></label>
+                    </div>
+                    <div class="col-1 me-5 mt-1">
+                        <p><b style="color: cadetblue;">P149</b></p>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col mt-1">
+                        <input type="checkbox" class="form-check-input" id="prod7" value="129">
+                        <label for="prod7" class="form-check-label"><b>Beef & Grilled Cheese</b></label>
+                    </div>
+                    <div class="col-1 me-5 mt-1">
+                        <p><b style="color: cadetblue;">P129</b></p>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col mt-1">
+                        <input type="checkbox" class="form-check-input" id="prod8" value="149">
+                        <label for="prod8" class="form-check-label"><b>Panini</b></label>
+                    </div>
+                    <div class="col-1 mt-1 me-5">
+                        <p><b style="color: cadetblue;">P149</b></p>
+                    </div>
+                </div>
+            </div>
+            
+                <br>
 
-        <div style="padding: 20px;">
-            <label for="cat">Category</label>
-                <select id="cat" class="form-control" required>
-                    <option value="0">Select Category</option>
-                    <option value="Perishables">Perishables</option>
-                    <option value="Consumables">Consumables</option>
-                    <option value="Non-Perishables">Non-Perishables</option>
-                </select>
-                <br>
-            <label>Product Name</label>
-                <input type="text" id="prod" placeholder="e.g Bottled Water" class="form-control" required>
-                <br>
-            <label>Stock Quantity</label>
-                <input type="number" id="quan" placeholder="e.g 30, 40, 50" class="form-control" required> 
-            <br><br>
-             
+
+                <h3>Sizes:</h3>
+                    <input type="radio" id="ac" value="0" name="size" checked>
+                    <label for="ac">Ala Carte <b>(+Php 0)</b></label>
+                    <br>
+                    <input type="radio" id="wdrink" value="30" name="size">
+                    <label for="wdrink">With Drink <b>(+Php 30)</b></label>
+                    <br>
+                    <input type="radio" id="combo" value="60" name="size">
+                    <label for="Combo">Combo (With Fries and Drink) <b>(+Php 60)</b></label>
+                    <br><br>
+
     <div class="d-grid gap-2">
-    <button type="button" py-click="show_sku" class="btn btn-outline-success" style="font-family: Limelight, serif; box-shadow: 0 0 10px 1px rgba(27, 27, 27, 0.5);">Generate SKU</button>
+    <button type="button" py-click="place_order" class="btn btn-outline-info" style="font-family: Limelight, sans; box-shadow: 0 0 10px 1px rgba(27, 27, 27, 0.5);"> 𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃 Place Order 𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃</button>  <!-- starts the calculation at Python-->
     </div>
     <br>
+         <!-- Where the subtotal, VAT, and total will be displayed-->
+    <div id="output1">
+        <p>|-->Your Receipt Will Appear Here<--|</p>
+    </div>
 
-    <div id="output2">
-        <p>|-->Your SKU will appear here<--|</p>
     </div>
-    </div>
-    <script type="py" src="main.py"></script>
-    </div>
+
+
+
+
+</body>
+</html>
     
 </body>
 </html>
